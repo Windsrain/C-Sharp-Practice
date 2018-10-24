@@ -158,7 +158,165 @@ C#中的转义序列与C相同。
 
 和C相同
 
-P36
+#### 赋值运算符
+
+和C相同
+
+#### 运算符的优先级
+
+和C相同
+
+#### 名称空间
+
+名称空间是**.NET**中提供应用程序代码容器的方式，这样就可以唯一地标识代码及其内容。
+
+默认情况下，C#代码包含在全局名称空间中。这意味着对于包含在这段代码中的项，全局名称空间中的其他代码只要通过名称进行引用，就可以访问它们。可使用**namespace**关键字为花括号中的代码块显示定义名称空间。如果在该名称空间代码的外部使用名称空间中的名称，就必须写出该名称空间中的限定名称。
+
+```C#
+namespace LevelOne
+{
+    // code in LevelOne namespace
+    namespace NameOne
+    {
+        // code in NameOne namespace
+    }
+}
+// code in global namespace
+```
+
+在名称空间**LevelOne**中编写的代码可以直接使用**NameOne**来引用该名称，但全局名称空间中的代码必须使用限定名称**LevelOne.NameOne**来引用这个名称。
+
+**using**语句本身不能访问另一个名称空间中的名称，除非名称空间中的代码以某种方式链接到项目上，或者代码是在该项目的源文件中定义的，或是在链接到该项目的其他代码中定义的。**using**语句便于我们访问这些名称，减少代码量，以及提高可读性。、
+
+
+
+## 第4章 流程控制
+
+### 布尔逻辑
+
+与C相同
+
+```C#
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter an integer:");
+            int myInt = Convert.ToInt32(Console.ReadLine());
+            bool isLessThan10 = myInt < 10;
+            bool isBetween0And5 = (0 <= myInt) && (myInt <= 5);
+            Console.WriteLine($"Integer less than 10? {isLessThan10}");
+            Console.WriteLine($"Integer between 0 and 5 {isBetween0And5}");
+            Console.WriteLine($"Exactly one of the above is true? {isLessThan10 ^ isBetween0And5}");
+            Console.ReadKey();
+        }
+```
+
+使用**Convert.ToInt32()**从字符串输入中得到一个整数，该方法是**System.Convert**静态类的一部分。
+
+
+
+### 分支
+
+#### 三元运算符
+
+```C#
+<test> ? <resultIfTrue> : <resultIfFalse>
+```
+
+#### if语句
+
+```C#
+if (<test>)
+{
+    <code executed if <test> is true>;
+}
+else
+{
+    <code executed if <test> is false>;
+}
+```
+
+#### switch语句
+
+```C#
+switch (<testVar>)
+{
+    case <comparisonVar1>:
+        <code to execute if <testVar> == <comparisonVal1>>
+        break;
+    case <comparisonVar2>:
+        <code to execute if <testVar> == <comparisonVal2>>
+        break;
+    ···
+    case <comparisonVarN>:
+        <code to execute if <testVar> == <comparisonValN>>
+        break;
+    default:
+        <code to execute if <testVar> != comparisonVals>
+        break;
+}
+```
+
+C#与C和C++的不同是，没有**break**语句，导致连续执行**case**块是非法的。可以用**goto**语句跳**case**块。
+
+我们可以把多个**case**语句放在一起，其后加一个代码块，实际上是一次检查多个条件。
+
+假如定义一个字符串变量**name**，我们可以用**name.ToLower()**把字符全部转为小写，方便在**switch**语句中进行匹配。
+
+
+
+### 循环
+
+#### do循环
+
+```C#
+do
+{
+    <code to be looped>
+} while (<Test>);
+```
+
+#### while循环
+
+```C#
+while <(Test)>
+{
+	<code to be looped>
+}
+```
+
+#### for循环
+
+```C#
+for (<initialization>;<condition>;<operation>)
+{
+    <code to loop>
+}
+```
+
+#### 循环的中断
+
+* **break**——立即终止循环
+* **continue**——立即终止当前的循环（继续执行下一次循环）
+* **return**——跳出循环及包含该循环的函数
+
+#### 无限循环
+
+```C#
+while (true)
+{
+    // code in loop
+}
+```
+
+
+
+## 第5章 变量的更多内容
+
+### 类型转换
+
+
+
+
 
 
 
